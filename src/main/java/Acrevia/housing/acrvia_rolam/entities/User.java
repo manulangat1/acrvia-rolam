@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -37,7 +38,7 @@ public class User {
     @Column(nullable = false)
     private  String email;
 
-    @CreatedDate
+    @CreationTimestamp
     @Column(
             name = "created_at",
             updatable = false, nullable = false
@@ -62,5 +63,16 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, lastName, email, createdAt, updatedAt);
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected  void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
     }
 }

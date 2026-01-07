@@ -3,6 +3,7 @@ package Acrevia.housing.acrvia_rolam.modules.auth;
 
 import Acrevia.housing.acrvia_rolam.entities.User;
 import Acrevia.housing.acrvia_rolam.modules.auth.dto.CreateUserRequestDto;
+import Acrevia.housing.acrvia_rolam.modules.auth.dto.LoginUserRequestDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -26,5 +27,13 @@ private  final  AuthService authService;
             ) {
         User user = authService.createUser(data);
         return  new ResponseEntity<>("User sign up successfully", HttpStatus.CREATED);
+    }
+
+    @PostMapping(path = "/login/")
+    public  ResponseEntity<User> login(
+            @Valid @RequestBody LoginUserRequestDto data
+            ) {
+        User user = authService.loginUser(data);
+        return  new ResponseEntity<>(user, HttpStatus.OK);
     }
 }
