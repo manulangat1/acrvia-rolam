@@ -1,5 +1,10 @@
 package Acrevia.housing.acrvia_rolam.modules.auth;
 
-@Mapper()
+import org.mapstruct.Mapper;
+
+@Mapper( componentModel = "spring")
 public interface AuthMapper {
+
+
+    
 }
