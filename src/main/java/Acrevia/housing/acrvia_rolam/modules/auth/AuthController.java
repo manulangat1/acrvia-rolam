@@ -11,11 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@RestController
 @RequestMapping(path = "/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
-private  final  AuthService authService;
+    private  final  AuthService authService;
+
     @GetMapping
     public ResponseEntity<String> getLoggedInUser() {
         return  new ResponseEntity("Hello world", HttpStatus.OK);
