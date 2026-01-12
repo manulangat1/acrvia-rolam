@@ -20,7 +20,7 @@ import java.util.UUID;
 @Setter
 public class Agent {
 
-
+    @Id
     @GeneratedValue(strategy=GenerationType.UUID)
     @Column( updatable = false, nullable = false)
     private UUID id;

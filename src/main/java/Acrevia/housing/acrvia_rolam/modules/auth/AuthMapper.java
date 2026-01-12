@@ -1,8 +1,8 @@
 package Acrevia.housing.acrvia_rolam.modules.auth;
 
-import org.mapstruct.Mapper;
+//import org.mapstruct.Mapper;
 
-@Mapper( componentModel = "spring")
+//@Mapper( componentModel = "spring")
 public interface AuthMapper {
 
 
